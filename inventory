@@ -1,0 +1,2 @@
+
+localhost ansible_user=deepa ansible_ssh_pass=deepa
