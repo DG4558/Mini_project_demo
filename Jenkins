@@ -43,7 +43,7 @@ pipeline{
              emailext (
       to: 'deepanjalighosh2017@gmail.com',
       subject: "Build failed",
-      body: "Calculator build failed",
+      body: "Calculator build failed"
       
     )
                
