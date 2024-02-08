@@ -1,10 +1,3 @@
-def DEFAULT_SUBJECT = "Build Failed"
-def DEFAULT_CONTENT = "The build has failed. Please investigate."
-def DEFAULT_REPLYTO = "deepanjalighosh2017@gmail.com"
-def DEFAULT_RECIPIENTS = "deepanjalighosh2017@gmail.com"
-
-
-
 pipeline{
     agent any
     stages{
@@ -46,20 +39,14 @@ pipeline{
         }
 }
         post {
-        changed {
-            script {
-                if (currentBuild.currentResult == 'FAILURE') {
-                    emailext subject: '$DEFAULT_SUBJECT',
-                        body: '$DEFAULT_CONTENT',
-                        recipientProviders: [
-                            [$class: 'CulpritsRecipientProvider'],
-                            [$class: 'DevelopersRecipientProvider'],
-                            [$class: 'RequesterRecipientProvider']
-                        ], 
-                        replyTo: '$DEFAULT_REPLYTO',
-                        to: '$DEFAULT_RECIPIENTS'
-                }
-            }
+        failure{
+             emailext (
+      to: 'deepanjalighosh2017@gmail.com',
+      subject: "Build failed"
+      body: "Calculator build failed"
+      recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+    )
+               
         }
     }
    
