@@ -8,7 +8,7 @@ read a
 read b
 
 
-echo "Enter choice"
+echo "Enter your choice"
 echo "1 to Add"
 echo "2 to Subtract"
 echo "3 to Multiply"
